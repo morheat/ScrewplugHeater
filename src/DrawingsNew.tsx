@@ -17,6 +17,8 @@ import Layout1N4T from "./assets/1inch NEMA 4 Built In Thermostat SPST NEMA 4.sv
 import Layout1N4FoldT from "./assets/1inch NEMA 4 Built In Thermostat SPST with fold back design.svg?react";
 import Layout1N4FoldDPST from "./assets/1 inch NEMA 4 built in Thermostat DPST with Foldback.svg?react";
 import Layout1N4DPST from "./assets/1 inch NEMA 4 Built in Thermostat DPST.svg?react";
+import Layout1N4DPST_HL from "./assets/1 inch NEMA 4 No Thermostat DPST.svg?react";
+import Layout1NFold4DPST_HL from "./assets/1 inch NEMA 4 DPST with Fold.svg?react";
 
 import Layout1N7 from "./assets/1inNEMA7.svg?react";
 import Layout1N7Fold from "./assets/1inNEMA7Fold.svg?react";
@@ -35,6 +37,9 @@ import Layout125N4_E1T from "./assets/1.25inch NEMA 4 Built In Thermostat SPST o
 import Layout125N4_E2T from "./assets/1.25inch NEMA 4 Built In Thermostat SPST two element.svg?react"
 import Layout125N4_E1DPST from "./assets/1.25 inch NEMA 4 built in Thermostat DPST with one element.svg?react"
 import Layout125N4_E2DPST from "./assets/1.25 inch NEMA 4 built in Thermostat DPST with two element.svg?react"
+import Layout125HLN4_E1DPST from "./assets/1.25 inch NEMA 4 DPST one element.svg?react"
+import Layout125HLN4_E2DPST from "./assets/1.25 inch NEMA 4 DPST two element.svg?react"
+
 
 import Layout125N7_E1 from "./assets/125inNEMA7_E1.svg?react"
 import Layout125N7_E2 from "./assets/125inNEMA7_E2.svg?react"
@@ -49,6 +54,7 @@ import Layout2N1T from "./assets/2inch NEMA 1 Built In Thermostat SPST & TPST.sv
 import Layout2N4T from "./assets/2inch NEMA 4 Built In Thermostat SPST.svg?react"
 import Layout2N7T from "./assets/2inch NEMA 7 Built In Thermostat SPST.svg?react"
 import Layout2N4DPST from "./assets/2 inch NEMA 4 DPST.svg?react"
+import Layout2HLN4DPST from "./assets/2 inch NEMA 4 DPST no thermowell.svg?react"
 
 //2.5 inch
 import Layout25N1 from "./assets/25inNEMA1.svg?react"
@@ -58,6 +64,7 @@ import Layout25N1T from "./assets/2.5inch NEMA 1 Built In Thermostat SPST & TPST
 import Layout25N4T from "./assets/2.5inch NEMA 4 Built In Thermostat SPST.svg?react"
 import Layout25N7T from "./assets/2.5inch NEMA 7 Built In Thermostat SPST.svg?react"
 import Layout25N4DPST from "./assets/2.5 inch NEMA 4 DPST.svg?react"
+import Layout25HLN4DPST from "./assets/2.5 inch NEMA 4 DPST no thermowell.svg?react"
 
 
 interface drawingProps {
@@ -109,8 +116,22 @@ const Drawings10: React.FC<drawingProps> = ({
   const showProcess = processTemp !== "nT";
   const hasFold = foldLength > 0 && NPTSize !==1.25;
   const showColdDim = coldLength > 0;
-  const isDPST = processTemp === "DPST" || hlSensor === "DPST";
-  const terminalBoxEffective = isDPST ? "N4" : terminalBox;
+  const dpstProcess = processTemp === "DPST";
+  const dpstHL = hlSensor === "DPST";
+
+  // ✅ Priority logic you described:
+  // - If process is ON: use regular layouts EXCEPT when HL is DPST (or process is DPST) -> then use PROCESS-DPST layout
+  // - Only use HL-DPST layout when process is OFF
+  const dpstMode: "none" | "process" | "hl" =
+    dpstProcess ? "process"
+    : (showProcess && dpstHL) ? "process"
+    : (!showProcess && dpstHL) ? "hl"
+    : "none";
+
+  const isAnyDPST = dpstMode !== "none";
+  const terminalBoxEffective = isAnyDPST ? "N4" : terminalBox;
+
+
 
 
   // °C/°F helpers (same as working)
@@ -222,8 +243,9 @@ const Drawings10: React.FC<drawingProps> = ({
     }
 
     if (NPTSize === 1 && tb === "N4") {
-      // ✅ DPST special layouts
-      if (isDPST) return hasFold ? Layout1N4FoldDPST : Layout1N4DPST;
+      // ✅ DPST special layouts (PROCESS wins if both)
+      if (dpstMode === "process") return hasFold ? Layout1N4FoldDPST : Layout1N4DPST;
+      if (dpstMode === "hl") return hasFold ? Layout1NFold4DPST_HL : Layout1N4DPST_HL;
 
       if (useT) return hasFold ? Layout1N4FoldT : Layout1N4T;
       return hasFold ? Layout1N4Fold : Layout1N4;
@@ -241,8 +263,9 @@ const Drawings10: React.FC<drawingProps> = ({
     }
 
     if (NPTSize === 1.25 && tb === "N4") {
-      // ✅ DPST special layouts (no foldback for 1.25 in your code, so just element count)
-      if (isDPST) return elementCount === 2 ? Layout125N4_E2DPST : Layout125N4_E1DPST;
+      if (dpstMode === "process") return elementCount === 2 ? Layout125N4_E2DPST : Layout125N4_E1DPST;
+      if (dpstMode === "hl") return elementCount === 2 ? Layout125HLN4_E2DPST : Layout125HLN4_E1DPST;
+
 
       if (useT) return elementCount === 2 ? Layout125N4_E2T : Layout125N4_E1T;
       return elementCount === 2 ? Layout125N4_E2 : Layout125N4_E1;
@@ -257,8 +280,9 @@ const Drawings10: React.FC<drawingProps> = ({
     if (NPTSize === 2 && tb === "N1") return useT ? Layout2N1T : Layout2N1;
 
     if (NPTSize === 2 && tb === "N4") {
-      // ✅ DPST special layout
-      if (isDPST) return Layout2N4DPST;
+      if (dpstMode === "process") return Layout2N4DPST;
+      if (dpstMode === "hl") return Layout2HLN4DPST;
+
 
       return useT ? Layout2N4T : Layout2N4;
     }
@@ -269,8 +293,9 @@ const Drawings10: React.FC<drawingProps> = ({
     if (NPTSize === 2.5 && tb === "N1") return useT ? Layout25N1T : Layout25N1;
 
     if (NPTSize === 2.5 && tb === "N4") {
-      // ✅ DPST special layout
-      if (isDPST) return Layout25N4DPST;
+      if (dpstMode === "process") return Layout25N4DPST;
+      if (dpstMode === "hl") return Layout25HLN4DPST;
+
 
       return useT ? Layout25N4T : Layout25N4;
     }
@@ -278,7 +303,7 @@ const Drawings10: React.FC<drawingProps> = ({
     if (NPTSize === 2.5 && tb === "N7") return useT ? Layout25N7T : Layout25N7;
 
     return null;
-  }, [NPTSize, terminalBoxEffective, isDPST, hasFold, elementCount, showProcess]);
+  }, [NPTSize, terminalBoxEffective, dpstMode, hasFold, elementCount, showProcess]);
 
 
 
@@ -435,6 +460,28 @@ const Drawings10: React.FC<drawingProps> = ({
     flangeLeader: { left: "58%", bottom: "18%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 200, textRotate: 0 }, //NPT size
   };
 
+  const cfg1N4DPST_HL = {
+    processLeader: { left: "75%", bottom: "80%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "72.5%", bottom: "52.5%"},
+    
+    hlBar: { left: "61%", bottom: "34%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-35%", rotate: -20, lineHeight: 135, textOffsetY: -2},
+    HLDim: { left: "61%", bottom: "-8%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "89%", bottom: "6%", rotate: -10, lineHeight: 23, textOffsetY: 6, textWidth: 180 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "19%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "30%" },
+
+    coldDim: { left: "61%", bottom: "15%", width: "5%", riseHeight: 20 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-54%", rotate: 20, lineHeight: 52, textOffsetY: 0, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "58%", bottom: "-42%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 200, textRotate: 0 }, //NPT size
+  };
+
   const cfg1N4_T = {
     processLeader: { left: "75%", bottom: "125%", rotate: 15, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
     thermoDim: { left: "71%", bottom: "59%"},
@@ -499,6 +546,28 @@ const Drawings10: React.FC<drawingProps> = ({
     
     terminalBoxLeader: { left: "39%", bottom: "11%", rotate: 20, lineHeight: 52, textOffsetY: 0, textWidth: 220, textRotate: 0 },
     flangeLeader: { left: "56%", bottom: "18%", rotate: 0, lineHeight: 125, textOffsetY: 0, textWidth: 200, textRotate: 0 }, //NPT size
+  };
+
+  const cfg1N4FoldDPST_HL = {
+    processLeader: { left: "75%", bottom: "80%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "72.5%", bottom: "52.5%"},
+    
+    hlBar: { left: "60.5%", bottom: "34%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-35%", rotate: -25, lineHeight: 140, textOffsetY: -2},
+    HLDim: { left: "60.5%", bottom: "-8%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "89%", bottom: "6%", rotate: -10, lineHeight: 23, textOffsetY: 6, textWidth: 180 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "19%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "83%", top: "29%" },
+
+    coldDim: { left: "60.5%", bottom: "10%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-54%", rotate: 20, lineHeight: 52, textOffsetY: 0, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "58%", bottom: "-42%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 200, textRotate: 0 }, //NPT size
   };
 
   const cfg1N4Fold_T = {
@@ -747,6 +816,28 @@ const Drawings10: React.FC<drawingProps> = ({
     flangeLeader: { left: "56%", bottom: "20%", rotate: 0, lineHeight: 115, textOffsetY: 6, textWidth: 200, textRotate: 0 }, //NPT size
   };
 
+  const cfg125N4E1DPST_HL = {
+    processLeader: { left: "75%", bottom: "80%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "72.5%", bottom: "52.5%"},
+    
+    hlBar: { left: "60.75%", bottom: "34%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-35%", rotate: -20, lineHeight: 135, textOffsetY: -2},
+    HLDim: { left: "60.75%", bottom: "-8%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "89%", bottom: "6%", rotate: -10, lineHeight: 23, textOffsetY: 6, textWidth: 180 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "16%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "30%" },
+
+    coldDim: { left: "60.75%", bottom: "15%", width: "5%", riseHeight: 20 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-54%", rotate: 20, lineHeight: 52, textOffsetY: 0, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "58%", bottom: "-42%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 200, textRotate: 0 }, //NPT size
+  };
+
 
   const cfg125N4E1_T = {
     processLeader: { left: "75%", bottom: "125%", rotate: 30, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
@@ -812,6 +903,28 @@ const Drawings10: React.FC<drawingProps> = ({
     
     terminalBoxLeader: { left: "38%", bottom: "14.5%", rotate: 25, lineHeight: 40, textOffsetY: 0, textWidth: 220, textRotate: 0 },
     flangeLeader: { left: "56.5%", bottom: "20%", rotate: 0, lineHeight: 115, textOffsetY: 6, textWidth: 200, textRotate: 0 }, //NPT size
+  };
+
+  const cfg125N4E2DPST_HL = {
+    processLeader: { left: "75%", bottom: "80%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "72.5%", bottom: "52.5%"},
+    
+    hlBar: { left: "60.75%", bottom: "34%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-35%", rotate: -20, lineHeight: 135, textOffsetY: -2},
+    HLDim: { left: "60.75%", bottom: "-8%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "89%", bottom: "6%", rotate: -10, lineHeight: 23, textOffsetY: 6, textWidth: 180 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "16%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "30%" },
+
+    coldDim: { left: "60.75%", bottom: "15%", width: "5%", riseHeight: 20 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-54%", rotate: 20, lineHeight: 52, textOffsetY: 0, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "58%", bottom: "-42%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 200, textRotate: 0 }, //NPT size
   };
 
   const cfg125N4E2_T = {
@@ -1016,6 +1129,28 @@ const Drawings10: React.FC<drawingProps> = ({
     flangeLeader: { left: "56.5%", bottom: "20%", rotate: 0, lineHeight: 100, textOffsetY: 6, textWidth: 200, textRotate: 0 }, //NPT size
   };
 
+  const cfg2N4DPST_HL = {
+    processLeader: { left: "75%", bottom: "80%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "72.5%", bottom: "52.5%"},
+    
+    hlBar: { left: "60.75%", bottom: "27%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-35%", rotate: -30, lineHeight: 130, textOffsetY: -2},
+    HLDim: { left: "60.75%", bottom: "-15%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "89%", bottom: "2%", rotate: -10, lineHeight: 23, textOffsetY: 6, textWidth: 180 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: {left: "80%", top: "16%"},
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "-15555%" },
+
+    coldDim: { left: "60.75%", bottom: "5%", width: "5%", riseHeight: 30 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-55%", rotate: 20, lineHeight: 52, textOffsetY: 0, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "58%", bottom: "-45%", rotate: 0, lineHeight: 140, textOffsetY: 0, textWidth: 200, textRotate: 0 }, //NPT size
+  };
+
   const cfg2N4_T = {
     processLeader: { left: "75%", bottom: "125%", rotate: 29, lineHeight: 190, textOffsetY: 6, textWidth: 230 },
     thermoDim: { left: "73%", bottom: "71%"},
@@ -1174,6 +1309,28 @@ const Drawings10: React.FC<drawingProps> = ({
     flangeLeader: { left: "56%", bottom: "20%", rotate: 0, lineHeight: 100, textOffsetY: 6, textWidth: 200, textRotate: 0 }, //NPT size
   };
 
+  const cfg25N4DPST_HL = {
+    processLeader: { left: "75%", bottom: "80%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "72.5%", bottom: "52.5%"},
+    
+    hlBar: { left: "61.5%", bottom: "25%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-35%", rotate: -40, lineHeight: 135, textOffsetY: -2},
+    HLDim: { left: "61.5%", bottom: "-18%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "89%", bottom: "-5f%", rotate: -10, lineHeight: 23, textOffsetY: 6, textWidth: 180 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: {left: "80%", top: "16%"},
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "-15555%" },
+
+    coldDim: { left: "61.5%", bottom: "2%", width: "5%", riseHeight: 30 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-55%", rotate: 20, lineHeight: 52, textOffsetY: 0, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "58%", bottom: "-45%", rotate: 0, lineHeight: 140, textOffsetY: 0, textWidth: 200, textRotate: 0 }, //NPT size
+  };
+
   const cfg25N4_T = {
     processLeader: { left: "75%", bottom: "135%", rotate: 25, lineHeight: 205, textOffsetY: 6, textWidth: 230 },
     thermoDim: { left: "73%", bottom: "70%"},
@@ -1251,7 +1408,9 @@ const Drawings10: React.FC<drawingProps> = ({
     }
 
     if (NPTSize === 1 && tb === "N4" ) {
-      if (isDPST) return hasFold ? cfg1N4FoldDPST : cfg1N4DPST;
+      if (dpstMode === "process") return hasFold ? cfg1N4FoldDPST : cfg1N4DPST;
+      if (dpstMode === "hl") return hasFold ? cfg1N4FoldDPST_HL : cfg1N4DPST_HL;
+
 
       if (useT) return hasFold ? cfg1N4Fold_T : cfg1N4_T;
       return hasFold? cfg1N4Fold : cfg1N4;
@@ -1270,7 +1429,8 @@ const Drawings10: React.FC<drawingProps> = ({
     }
 
     if (NPTSize === 1.25 && tb === "N4" ) {
-      if (isDPST) return elementCount === 2 ? cfg125N4E2DPST : cfg125N4E1DPST;
+      if (dpstMode === "process") return elementCount === 2 ? cfg125N4E2DPST : cfg125N4E1DPST;
+      if (dpstMode === "hl") return elementCount === 2 ? cfg125N4E2DPST_HL : cfg125N4E1DPST_HL; 
 
       if (useT) return elementCount === 2 ? cfg125N4E2_T : cfg125N4E1_T;
       if(elementCount === 1) return cfg125N4E1;
@@ -1289,7 +1449,8 @@ const Drawings10: React.FC<drawingProps> = ({
     }
 
     if (NPTSize === 2 && tb === "N4" ) {
-      if (isDPST) return cfg2N4DPST;
+      if (dpstMode === "process") return cfg2N4DPST;
+      if (dpstMode === "hl") return cfg2N4DPST_HL;
       return useT ? cfg2N4_T : cfg2N4
     }
 
@@ -1303,7 +1464,8 @@ const Drawings10: React.FC<drawingProps> = ({
     }
 
     if (NPTSize === 2.5 && tb === "N4" ) {
-      if (isDPST) return cfg25N4DPST;
+      if (dpstMode === "process") return cfg25N4DPST;
+      if (dpstMode === "hl") return cfg25N4DPST_HL;
       return useT ? cfg25N4_T : cfg25N4
     }
 
@@ -1312,7 +1474,8 @@ const Drawings10: React.FC<drawingProps> = ({
     }
 
     return null;
-  }, [NPTSize, phase, terminalBoxEffective, isDPST, hasFold, elementCount, showProcess]);
+  }, [NPTSize, phase, terminalBoxEffective, dpstMode, hasFold, elementCount, showProcess]);
+
 
   return (
     <div ref={drawingRef} className=" relative w-[1000px] h-[772.73px] flex items-center justify-center bg-white border-2 border-slate-400 rounded-lg">
