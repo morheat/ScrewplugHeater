@@ -15,7 +15,12 @@ function App() {
   const [materialVar, setMaterial] = useState<string>("304SS");
 
   const [NPTSizeOp, setNPTSize] = useState<number>(1);
-  const [immersionLengthVar, setImmersionLength] = useState<number>(25);
+  const [immersionLengthText, setImmersionLengthText] = useState<string>("25");
+  const immersionLengthVar =
+    Number.isFinite(Number.parseFloat(immersionLengthText))
+      ? Number.parseFloat(immersionLengthText)
+      : 0;
+
   const [foldLengthVar, setFoldLength] = useState<number>(0);
   const [coldLengthText, setColdLengthText] = useState<string>("2.5");
 
@@ -28,12 +33,18 @@ function App() {
   // ✅ Process thermowell (expanded)
   const [processType, setProcessType] = useState<string>("nT"); // nT | J | K | RTD | SPST | DPST
   const [processRange, setProcessRange] = useState<string>(""); // SPST: "C:0,40"  DPST: "F:0,100"
-  const [processLength, setProcessLength] = useState<number>(8);
+  const [processLengthText, setProcessLengthText] = useState<string>("8");
+  const processLengthNum = Number.isFinite(Number.parseFloat(processLengthText))
+    ? Number.parseFloat(processLengthText)
+    : 0;
 
   // ✅ High Limit thermowell (expanded)
   const [hlType, setHLType] = useState<string>("nHL"); // nHL | J | K | RTD | SPST | DPST
   const [hlRange, setHLRange] = useState<string>("");
-  const [hlLength, setHLLength] = useState<number>(8);
+  const [hlLengthText, setHLLengthText] = useState<string>("8");
+  const hlLengthNum = Number.isFinite(Number.parseFloat(hlLengthText))
+    ? Number.parseFloat(hlLengthText)
+    : 0;
   //const [typeThermostat, setTypeThermostat] = useState<string>("");
 
 
@@ -220,12 +231,16 @@ function formatRangeLabel(range: string) {
 
         <div>
           <h1>Immersion Length</h1>
-          <input
-            type="text"
-            defaultValue={25}
-            onChange={(e) => setImmersionLength(Number(e.target.value) || 0)}
-            className="input input-bordered border-cyan-500 border-2 input-xs max-w-xs text-gray-700 dark:text-gray-300"
-          />
+            <input
+              type="text"
+              inputMode="decimal"
+              value={immersionLengthText}
+              onChange={(e) => {
+                const v = e.target.value.replace(",", "."); // optional: allows comma decimals too
+                if (/^\d*\.?\d*$/.test(v)) setImmersionLengthText(v);
+              }}
+              className="input input-bordered border-cyan-500 border-2 input-xs max-w-xs text-gray-700 dark:text-gray-300"
+            />
         </div>
 
         {NPTSizeOp === 1.25 && (
@@ -391,16 +406,13 @@ function formatRangeLabel(range: string) {
                         <input
                           type="text"
                           inputMode="decimal"
-                          value={String(processLength)}
+                          value={processLengthText}
                           onChange={(e) => {
-                            const v = e.target.value;
-                            // allow "", "8", "8.", "8.5"
-                            if (/^\d*\.?\d*$/.test(v)) {
-                              setProcessLength(v === "" ? 0 : Number.parseFloat(v));
-                            }
+                            const v = e.target.value.replace(",", ".");
+                            if (/^\d*\.?\d*$/.test(v)) setProcessLengthText(v);
                           }}
                           className="input input-bordered border-cyan-500 border-2 input-xs w-full text-gray-700 dark:text-gray-300"
-                        />
+                        />    
                       </div>
                     </div>
                   </div>
@@ -446,18 +458,16 @@ function formatRangeLabel(range: string) {
 
                       <div className="mt-1">
                         <h1>Length</h1>
-                        <input
-                          type="text"
-                          inputMode="decimal"
-                          value={String(hlLength)}
-                          onChange={(e) => {
-                            const v = e.target.value;
-                            if (/^\d*\.?\d*$/.test(v)) {
-                              setHLLength(v === "" ? 0 : Number.parseFloat(v));
-                            }
-                          }}
-                          className="input input-bordered border-cyan-500 border-2 input-xs w-full text-gray-700 dark:text-gray-300"
-                        />
+                          <input
+                            type="text"
+                            inputMode="decimal"
+                            value={hlLengthText}
+                            onChange={(e) => {
+                              const v = e.target.value.replace(",", ".");
+                              if (/^\d*\.?\d*$/.test(v)) setHLLengthText(v);
+                            }}
+                            className="input input-bordered border-cyan-500 border-2 input-xs w-full text-gray-700 dark:text-gray-300"
+                          />
                       </div>
                     </div>
                   </div>
@@ -518,11 +528,11 @@ function formatRangeLabel(range: string) {
         elementCount={elementCount}
         processTemp={processType}
         processRange={processRange}
-        thermoLength={processLength}
+        thermoLength={processLengthNum}
         hlSensor={hlType}
         //typeThermostat={typeThermostat}
         hlRange={hlRange}
-        hlLength={hlLength}
+        hlLength={hlLengthNum}
       />
     </div>
   );
