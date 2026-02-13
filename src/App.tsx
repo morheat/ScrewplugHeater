@@ -49,7 +49,12 @@ function App() {
 
 
   const drawingRef = useRef<HTMLDivElement>(null);
-  const dpstActive = processType === "DPST" || hlType === "DPST";
+  const processDPST = processType === "DPST";
+  const hlDPST = processType === "nT" && hlType === "DPST"; 
+  // HL only matters if process is OFF
+
+  const dpstActive = processDPST || hlDPST;
+
 
   async function getDrawingBlob(): Promise<Blob> {
     if (!drawingRef.current) throw new Error("Drawing ref not found");
@@ -96,10 +101,13 @@ function App() {
   }
 
   useEffect(() => {
-    if (dpstActive && terminalBoxVar !== "N4") {
-      setTerminalBox("N4");
-    }
-  }, [dpstActive, terminalBoxVar]);
+    if (!dpstActive) return;
+
+    setTerminalBox(prev =>
+      prev === "N4" || prev === "N7" ? prev : "N4"
+    );
+  }, [dpstActive]);
+
 
 
   useEffect(() => {
@@ -479,19 +487,19 @@ function formatRangeLabel(range: string) {
 
 
 
-        <div className="mt-2">
+        <div>
           <h1>Terminal Box</h1>
           <select
-            className="select select-xs border-cyan-500 border-2 text-gray-700 dark:text-gray-300"
+            className="select select-xs border-cyan-500 border-2 text-gray-700"
             value={terminalBoxVar}
-            disabled={dpstActive}
             onChange={(e) => setTerminalBox(e.target.value)}
           >
-            <option value="N1">NEMA 1</option>
+            {!dpstActive && <option value="N1">NEMA 1</option>}
             <option value="N4">NEMA 4</option>
             <option value="N7">NEMA 7</option>
           </select>
         </div>
+
 
         <div className="mt-4 space-y-2">
           <button

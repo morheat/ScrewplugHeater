@@ -18,12 +18,16 @@ import Layout1N4FoldT from "./assets/1inch NEMA 4 Built In Thermostat SPST with 
 import Layout1N4FoldDPST from "./assets/1 inch NEMA 4 built in Thermostat DPST with Foldback.svg?react";
 import Layout1N4DPST from "./assets/1 inch NEMA 4 Built in Thermostat DPST.svg?react";
 import Layout1N4DPST_HL from "./assets/1 inch NEMA 4 No Thermostat DPST.svg?react";
-import Layout1NFold4DPST_HL from "./assets/1 inch NEMA 4 DPST with Fold.svg?react";
+import Layout1N4FoldDPST_HL from "./assets/1 inch NEMA 4 DPST with Fold.svg?react";
 
 import Layout1N7 from "./assets/1inNEMA7.svg?react";
 import Layout1N7Fold from "./assets/1inNEMA7Fold.svg?react";
 import Layout1N7T from "./assets/1inch NEMA 7 Built In Thermostat SPST.svg?react";
 import Layout1N7FoldT from "./assets/1inch NEMA 7 Built In Thermostat SPST with Foldback Design.svg?react";
+import Layout1N7FoldDPST from "./assets/1 inch NEMA 7 DPST fold.svg?react";
+import Layout1N7DPST from "./assets/1 inch NEMA 7 DPST.svg?react";
+import Layout1N7DPST_HL from "./assets/1 inch NEMA 7 DPST no thermowell.svg";
+import Layout1N7FoldDPST_HL from "./assets/1 inch NEMA 7 DPST fold no thermowell.svg";
 
 // 1.25 Inch
 import Layout125N1_E1 from "./assets/125inNEMA1_E1.svg?react"
@@ -40,11 +44,14 @@ import Layout125N4_E2DPST from "./assets/1.25 inch NEMA 4 built in Thermostat DP
 import Layout125HLN4_E1DPST from "./assets/1.25 inch NEMA 4 DPST one element.svg?react"
 import Layout125HLN4_E2DPST from "./assets/1.25 inch NEMA 4 DPST two element.svg?react"
 
-
 import Layout125N7_E1 from "./assets/125inNEMA7_E1.svg?react"
 import Layout125N7_E2 from "./assets/125inNEMA7_E2.svg?react"
 import Layout125N7_E1T from "./assets/1.25inch NEMA 7 Built In Thermostat SPST one Element.svg?react"
 import Layout125N7_E2T from "./assets/1.25inch NEMA 7 Built In Thermostat SPST two element.svg?react"
+import Layout125N7_E1DPST from "./assets/1.25 inch NEMA 7 DPST 1 element.svg?react"
+import Layout125N7_E2DPST from "./assets/1.25 inch NEMA 7 DPST 2 element.svg?react"
+import Layout125HLN7_E1DPST from "./assets/1.25 inch NEMA 7 DPST 1 element no Thermowell.svg?react"
+import Layout125HLN7_E2DPST from "./assets/1.25 inch NEMA 7 DPST 2 element no thermowell.svg?react"
 
 //2 inch
 import Layout2N1 from "./assets/2inNEMA1.svg?react"
@@ -55,6 +62,8 @@ import Layout2N4T from "./assets/2inch NEMA 4 Built In Thermostat SPST.svg?react
 import Layout2N7T from "./assets/2inch NEMA 7 Built In Thermostat SPST.svg?react"
 import Layout2N4DPST from "./assets/2 inch NEMA 4 DPST.svg?react"
 import Layout2HLN4DPST from "./assets/2 inch NEMA 4 DPST no thermowell.svg?react"
+import Layout2N7DPST from "./assets/2 inch NEMA 7 DPST.svg?react"
+import Layout2HLN7DPST from "./assets/2 inch NEMA 7 DPST no thermowell.svg?react"
 
 //2.5 inch
 import Layout25N1 from "./assets/25inNEMA1.svg?react"
@@ -65,6 +74,8 @@ import Layout25N4T from "./assets/2.5inch NEMA 4 Built In Thermostat SPST.svg?re
 import Layout25N7T from "./assets/2.5inch NEMA 7 Built In Thermostat SPST.svg?react"
 import Layout25N4DPST from "./assets/2.5 inch NEMA 4 DPST.svg?react"
 import Layout25HLN4DPST from "./assets/2.5 inch NEMA 4 DPST no thermowell.svg?react"
+import Layout25N7DPST from "./assets/2.5 inch NEMA 7 DPST.svg?react"
+import Layout25HLN7DPST from "./assets/2.5 inch NEMA 7 DPST no Thermowell.svg?react"
 
 
 interface drawingProps {
@@ -245,13 +256,16 @@ const Drawings10: React.FC<drawingProps> = ({
     if (NPTSize === 1 && tb === "N4") {
       // ✅ DPST special layouts (PROCESS wins if both)
       if (dpstMode === "process") return hasFold ? Layout1N4FoldDPST : Layout1N4DPST;
-      if (dpstMode === "hl") return hasFold ? Layout1NFold4DPST_HL : Layout1N4DPST_HL;
+      if (dpstMode === "hl") return hasFold ? Layout1N4FoldDPST_HL : Layout1N4DPST_HL;
 
       if (useT) return hasFold ? Layout1N4FoldT : Layout1N4T;
       return hasFold ? Layout1N4Fold : Layout1N4;
     }
 
     if (NPTSize === 1 && tb === "N7") {
+      if (dpstMode === "process") return hasFold ? Layout1N7FoldDPST : Layout1N7DPST;
+      if (dpstMode === "hl") return hasFold ? Layout1N7FoldDPST_HL : Layout1N7DPST_HL;
+
       if (useT) return hasFold ? Layout1N7FoldT : Layout1N7T;
       return hasFold ? Layout1N7Fold : Layout1N7;
     }
@@ -272,7 +286,9 @@ const Drawings10: React.FC<drawingProps> = ({
     }
 
     if (NPTSize === 1.25 && tb === "N7") {
-      if (useT) return elementCount === 2 ? Layout125N7_E2T : Layout125N7_E1T;
+      if (dpstMode === "process") return elementCount === 2 ? Layout125N7_E2DPST : Layout125N7_E1DPST;
+      if (dpstMode === "hl") return elementCount === 2 ? Layout125HLN7_E2DPST : Layout125HLN7_E1DPST;
+
       return elementCount === 2 ? Layout125N7_E2 : Layout125N7_E1;
     }
 
@@ -287,8 +303,12 @@ const Drawings10: React.FC<drawingProps> = ({
       return useT ? Layout2N4T : Layout2N4;
     }
 
-    if (NPTSize === 2 && tb === "N7") return useT ? Layout2N7T : Layout2N7;
-
+    if (NPTSize === 2 && tb === "N7"){ 
+      if (dpstMode === "process") return Layout2N7DPST;
+      if (dpstMode === "hl") return Layout2HLN7DPST;      
+      
+      return useT ? Layout2N7T : Layout2N7;
+    }
     // ----- 2.5 inch -----
     if (NPTSize === 2.5 && tb === "N1") return useT ? Layout25N1T : Layout25N1;
 
@@ -300,7 +320,12 @@ const Drawings10: React.FC<drawingProps> = ({
       return useT ? Layout25N4T : Layout25N4;
     }
 
-    if (NPTSize === 2.5 && tb === "N7") return useT ? Layout25N7T : Layout25N7;
+    if (NPTSize === 2.5 && tb === "N7"){ 
+      if (dpstMode === "process") return Layout25N7DPST;
+      if (dpstMode === "hl") return Layout25HLN7DPST;
+      
+      return useT ? Layout25N7T : Layout25N7;
+    }
 
     return null;
   }, [NPTSize, terminalBoxEffective, dpstMode, hasFold, elementCount, showProcess]);
