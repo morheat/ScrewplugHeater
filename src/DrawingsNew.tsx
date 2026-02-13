@@ -289,6 +289,7 @@ const Drawings10: React.FC<drawingProps> = ({
       if (dpstMode === "process") return elementCount === 2 ? Layout125N7_E2DPST : Layout125N7_E1DPST;
       if (dpstMode === "hl") return elementCount === 2 ? Layout125HLN7_E2DPST : Layout125HLN7_E1DPST;
 
+      if (useT) return elementCount === 2 ? Layout125N7_E2T : Layout125N7_E1T;
       return elementCount === 2 ? Layout125N7_E2 : Layout125N7_E1;
     }
 
