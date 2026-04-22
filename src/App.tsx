@@ -496,6 +496,7 @@ function formatRangeLabel(range: string) {
           >
             {!dpstActive && <option value="N1">NEMA 1</option>}
             <option value="N4">NEMA 4</option>
+            <option value="N4B">NEMA 4 Big</option>
             <option value="N7">NEMA 7</option>
           </select>
         </div>

@@ -19,6 +19,10 @@ import Layout1N4FoldDPST from "./assets/1 inch NEMA 4 built in Thermostat DPST w
 import Layout1N4DPST from "./assets/1 inch NEMA 4 Built in Thermostat DPST.svg?react";
 import Layout1N4DPST_HL from "./assets/1 inch NEMA 4 No Thermostat DPST.svg?react";
 import Layout1N4FoldDPST_HL from "./assets/1 inch NEMA 4 DPST with Fold.svg?react";
+import Layout1N4B from "./assets/Nema 4 Big.svg?react"
+import Layout1N4BFold from "./assets/Nema 4 Big Fold.svg?react"
+import Layout1N4BT from "./assets/Nema 4 Big Termo.svg?react"
+import Layout1N4BTFold from "./assets/Nema 4 Big Termo Fold.svg?react"
 
 import Layout1N7 from "./assets/1inNEMA7.svg?react";
 import Layout1N7Fold from "./assets/1inNEMA7Fold.svg?react";
@@ -43,6 +47,10 @@ import Layout125N4_E1DPST from "./assets/1.25 inch NEMA 4 built in Thermostat DP
 import Layout125N4_E2DPST from "./assets/1.25 inch NEMA 4 built in Thermostat DPST with two element.svg?react"
 import Layout125HLN4_E1DPST from "./assets/1.25 inch NEMA 4 DPST one element.svg?react"
 import Layout125HLN4_E2DPST from "./assets/1.25 inch NEMA 4 DPST two element.svg?react"
+import Layout125N4B_E1 from "./assets/1.25 NEMA 4 Big 1 element.svg?react"
+import Layout125N4B_E2 from "./assets/1.25  NEMA 4 big 2 element.svg?react"
+import Layout125N4B_E1T from "./assets/1.25 NEMA 4 big thermo.svg?react"
+import Layout125N4B_E2T from "./assets/1.25 NEMA 4 Big Termo 2 element.svg?react"
 
 import Layout125N7_E1 from "./assets/125inNEMA7_E1.svg?react"
 import Layout125N7_E2 from "./assets/125inNEMA7_E2.svg?react"
@@ -64,6 +72,8 @@ import Layout2N4DPST from "./assets/2 inch NEMA 4 DPST.svg?react"
 import Layout2HLN4DPST from "./assets/2 inch NEMA 4 DPST no thermowell.svg?react"
 import Layout2N7DPST from "./assets/2 inch NEMA 7 DPST.svg?react"
 import Layout2HLN7DPST from "./assets/2 inch NEMA 7 DPST no thermowell.svg?react"
+import Layout2N4B from "./assets/2 NEMA 4 Big.svg?react"
+import Layout2N4BT from "./assets/2 NEMA 4 big thermo.svg?react"
 
 //2.5 inch
 import Layout25N1 from "./assets/25inNEMA1.svg?react"
@@ -76,6 +86,8 @@ import Layout25N4DPST from "./assets/2.5 inch NEMA 4 DPST.svg?react"
 import Layout25HLN4DPST from "./assets/2.5 inch NEMA 4 DPST no thermowell.svg?react"
 import Layout25N7DPST from "./assets/2.5 inch NEMA 7 DPST.svg?react"
 import Layout25HLN7DPST from "./assets/2.5 inch NEMA 7 DPST no Thermowell.svg?react"
+import Layout25N4B from "./assets/2.5 NEMA 4 big.svg?react"
+import Layout25N4BT from "./assets/2.5 NEMA 4 big Thermo.svg?react"
 
 
 interface drawingProps {
@@ -186,6 +198,7 @@ const Drawings10: React.FC<drawingProps> = ({
     const terminalBoxLabel = useMemo(() => {
       if (terminalBoxEffective === "N1") return "Terminal Box\nNEMA 1";
       if (terminalBoxEffective === "N4") return "Terminal Box\nNEMA 4";
+      if (terminalBoxEffective === "N4B") return "Terminal Box\nNEMA 4 Big";
       if (terminalBoxEffective === "N7") return "Terminal Box\nNEMA 7";
       return "Terminal Box";
     }, [terminalBoxEffective]);
@@ -262,6 +275,11 @@ const Drawings10: React.FC<drawingProps> = ({
       return hasFold ? Layout1N4Fold : Layout1N4;
     }
 
+    if (NPTSize === 1 && tb === "N4B") {
+      if (useT) return hasFold ? Layout1N4BTFold : Layout1N4BT;
+      return hasFold ? Layout1N4BFold : Layout1N4B;
+    }
+
     if (NPTSize === 1 && tb === "N7") {
       if (dpstMode === "process") return hasFold ? Layout1N7FoldDPST : Layout1N7DPST;
       if (dpstMode === "hl") return hasFold ? Layout1N7FoldDPST_HL : Layout1N7DPST_HL;
@@ -285,6 +303,11 @@ const Drawings10: React.FC<drawingProps> = ({
       return elementCount === 2 ? Layout125N4_E2 : Layout125N4_E1;
     }
 
+    if (NPTSize === 1.25 && tb === "N4B") {
+      if (useT) return elementCount === 2 ? Layout125N4B_E2T : Layout125N4B_E1T;
+      return elementCount === 2 ? Layout125N4B_E2 : Layout125N4B_E1;
+    }
+
     if (NPTSize === 1.25 && tb === "N7") {
       if (dpstMode === "process") return elementCount === 2 ? Layout125N7_E2DPST : Layout125N7_E1DPST;
       if (dpstMode === "hl") return elementCount === 2 ? Layout125HLN7_E2DPST : Layout125HLN7_E1DPST;
@@ -304,6 +327,10 @@ const Drawings10: React.FC<drawingProps> = ({
       return useT ? Layout2N4T : Layout2N4;
     }
 
+    if (NPTSize === 2 && tb === "N4B") {
+      return useT ? Layout2N4BT : Layout2N4B;
+    }
+
     if (NPTSize === 2 && tb === "N7"){ 
       if (dpstMode === "process") return Layout2N7DPST;
       if (dpstMode === "hl") return Layout2HLN7DPST;      
@@ -319,6 +346,10 @@ const Drawings10: React.FC<drawingProps> = ({
 
 
       return useT ? Layout25N4T : Layout25N4;
+    }
+
+    if (NPTSize === 2.5 && tb === "N4B") {
+      return useT ? Layout25N4BT : Layout25N4B;
     }
 
     if (NPTSize === 2.5 && tb === "N7"){ 
@@ -617,6 +648,33 @@ const Drawings10: React.FC<drawingProps> = ({
     terminalBoxLeader: { left: "36.5%", bottom: "-51%", rotate: 25, lineHeight: 100, textOffsetY: 6, textWidth: 220, textRotate: 0 },
     flangeLeader: { left: "56%", bottom: "-47%", rotate: 0, lineHeight: 175, textOffsetY: 6, textWidth: 220, textRotate: 0 }, //NPT size
   };
+
+  // 1 inch N4B
+  const cfg1N4B = {    
+    processLeader: { left: "75%", bottom: "140%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "67%", bottom: "59%"},
+    
+    hlBar: { left: "58%", bottom: "42%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 155, textOffsetY: -2},
+    HLDim: { left: "58%", bottom: "5%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "86%", bottom: "10%", rotate: -10, lineHeight: 40, textOffsetY: 6, textWidth: 215 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "76%", top: "13%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "30%" },
+
+    coldDim: { left: "58%", bottom: "20%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-40%", rotate: 20, lineHeight: 95, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "55%", bottom: "-28%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 200, textRotate: 0 },
+  }
+  const cfg1N4B_T = { ...cfg1N4_T };
+  const cfg1N4BFold = { ...cfg1N4Fold };
+  const cfg1N4BFold_T = { ...cfg1N4Fold_T };
+
 
   //Nema 7
   const cfg1N7 = {
@@ -1062,6 +1120,12 @@ const Drawings10: React.FC<drawingProps> = ({
     flangeLeader: { left: "56.5%", bottom: "-37%", rotate: 0, lineHeight: 160, textOffsetY: 0, textWidth: 195, textRotate: 0 }, //NPT size
   };
 
+  // 1.25 inch N4B
+  const cfg125N4BE1 = { ...cfg125N4E1 };
+  const cfg125N4BE1_T = { ...cfg125N4E1_T };
+  const cfg125N4BE2 = { ...cfg125N4E2 };
+  const cfg125N4BE2_T = { ...cfg125N4E2_T };
+
   //NEMA 7
   const cfg125N7E1 = {
     processLeader: { left: "75%", bottom: "120%", rotate: 30, lineHeight: 215, textOffsetY: 6, textWidth: 230 },
@@ -1374,6 +1438,9 @@ const Drawings10: React.FC<drawingProps> = ({
     flangeLeader: { left: "57%", bottom: "-42%", rotate: 0, lineHeight: 145, textOffsetY: 6, textWidth: 200, textRotate: 0 }, //NPT size
   };
 
+  const cfg2N4B = { ...cfg2N4 };
+  const cfg2N4B_T = { ...cfg2N4_T };
+
   //NEMA 7
   const cfg2N7 = {
     processLeader: { left: "75%", bottom: "135%", rotate: 25, lineHeight: 220, textOffsetY: 6, textWidth: 230 },
@@ -1598,6 +1665,10 @@ const Drawings10: React.FC<drawingProps> = ({
     flangeLeader: { left: "57%", bottom: "-40%", rotate: 0, lineHeight: 130, textOffsetY: 0, textWidth: 180, textRotate: 0 }, //NPT size
   };
 
+  // 2.5 inch N4B
+  const cfg25N4B = { ...cfg25N4 };
+  const cfg25N4B_T = { ...cfg25N4_T };
+
   //NEMA 7
   const cfg25N7 = {
     processLeader: { left: "75%", bottom: "140%", rotate: 30, lineHeight: 235, textOffsetY: 6, textWidth: 230 },
@@ -1705,6 +1776,11 @@ const Drawings10: React.FC<drawingProps> = ({
       return hasFold? cfg1N4Fold : cfg1N4;
     }
 
+    if (NPTSize === 1 && tb === "N4B") {
+      if (useT) return hasFold ? cfg1N4BFold_T : cfg1N4B_T;
+      return hasFold ? cfg1N4BFold : cfg1N4B;
+    }
+
     if (NPTSize === 1 && tb === "N7" ) {
       if (dpstMode === "process") return hasFold ? cfg1N7FoldDPST : cfg1N7DPST;
       if (dpstMode === "hl") return hasFold ? cfg1N7FoldDPST_HL : cfg1N7DPST_HL;
@@ -1729,6 +1805,11 @@ const Drawings10: React.FC<drawingProps> = ({
       if(elementCount === 2) return cfg125N4E2;
     }
 
+    if (NPTSize === 1.25 && tb === "N4B") {
+      if (useT) return elementCount === 2 ? cfg125N4BE2_T : cfg125N4BE1_T;
+      return elementCount === 2 ? cfg125N4BE2 : cfg125N4BE1;
+    }
+
     if (NPTSize === 1.25 && tb === "N7" ) {
       if (dpstMode === "process") return elementCount === 2 ? cfg125N7E2DPST : cfg125N7E1DPST;
       if (dpstMode === "hl") return elementCount === 2 ? cfg125N7E2DPST_HL : cfg125N7E1DPST_HL; 
@@ -1749,6 +1830,10 @@ const Drawings10: React.FC<drawingProps> = ({
       return useT ? cfg2N4_T : cfg2N4
     }
 
+    if (NPTSize === 2 && tb === "N4B") {
+      return useT ? cfg2N4B_T : cfg2N4B;
+    }
+
     if (NPTSize === 2 && tb === "N7" ) {
       if (dpstMode === "process") return cfg2N7DPST;
       if (dpstMode === "hl") return cfg2N7DPST_HL;
@@ -1765,6 +1850,10 @@ const Drawings10: React.FC<drawingProps> = ({
       if (dpstMode === "process") return cfg25N4DPST;
       if (dpstMode === "hl") return cfg25N4DPST_HL;
       return useT ? cfg25N4_T : cfg25N4
+    }
+
+    if (NPTSize === 2.5 && tb === "N4B") {
+      return useT ? cfg25N4B_T : cfg25N4B;
     }
 
     if (NPTSize === 2.5 && tb === "N7" ) {
