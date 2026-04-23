@@ -654,26 +654,86 @@ const Drawings10: React.FC<drawingProps> = ({
     processLeader: { left: "75%", bottom: "140%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
     thermoDim: { left: "67%", bottom: "59%"},
     
-    hlBar: { left: "58%", bottom: "42%", width: "18%", height: "2%" },
-    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 155, textOffsetY: -2},
-    HLDim: { left: "58%", bottom: "5%", width: "18%", dropHeight: 80 },
+    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
+    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
     
-    elemMatLeader: { left: "86%", bottom: "10%", rotate: -10, lineHeight: 40, textOffsetY: 6, textWidth: 215 },
+    elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
 
     immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
-    immersionText: { left: "76%", top: "13%" },
+    immersionText: { left: "80%", top: "16%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "83%", top: "25%" },
+
+    coldDim: { left: "63.5%", bottom: "23%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+  }
+  const cfg1N4B_T = { 
+    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "75%", bottom: "62%"},
+    
+    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
+    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "16%" },
 
     foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
     foldbackText: { left: "75%", top: "30%" },
 
-    coldDim: { left: "58%", bottom: "20%", width: "5%", riseHeight: 35 },
+    coldDim: { left: "63.5%", bottom: "23%", width: "5%", riseHeight: 35 },
     
-    terminalBoxLeader: { left: "39%", bottom: "-40%", rotate: 20, lineHeight: 95, textOffsetY: 6, textWidth: 220, textRotate: 0 },
-    flangeLeader: { left: "55%", bottom: "-28%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 200, textRotate: 0 },
-  }
-  const cfg1N4B_T = { ...cfg1N4_T };
-  const cfg1N4BFold = { ...cfg1N4Fold };
-  const cfg1N4BFold_T = { ...cfg1N4Fold_T };
+    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+  };
+  const cfg1N4BFold = { 
+    processLeader: { left: "75%", bottom: "140%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "67%", bottom: "59%"},
+    
+    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
+    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "16%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "83%", top: "25%" },
+
+    coldDim: { left: "63.5%", bottom: "23%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+  };
+  const cfg1N4BFold_T = {
+    processLeader: { left: "65%", bottom: "120%", rotate: 20, lineHeight: 190, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "75%", bottom: "56%"},
+    
+    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
+    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "16%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "83%", top: "25%" },
+
+    coldDim: { left: "63.5%", bottom: "23%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+  };
 
 
   //Nema 7
@@ -1121,10 +1181,90 @@ const Drawings10: React.FC<drawingProps> = ({
   };
 
   // 1.25 inch N4B
-  const cfg125N4BE1 = { ...cfg125N4E1 };
-  const cfg125N4BE1_T = { ...cfg125N4E1_T };
-  const cfg125N4BE2 = { ...cfg125N4E2 };
-  const cfg125N4BE2_T = { ...cfg125N4E2_T };
+  const cfg125N4BE1 = { 
+    processLeader: { left: "75%", bottom: "140%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "67%", bottom: "59%"},
+    
+    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
+    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "16%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "83%", top: "25%" },
+
+    coldDim: { left: "63.5%", bottom: "23%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+  };
+  const cfg125N4BE1_T = {
+    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "75%", bottom: "62%"},
+    
+    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
+    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "16%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "30%" },
+
+    coldDim: { left: "63.5%", bottom: "23%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+  };
+  const cfg125N4BE2 = { 
+    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "75%", bottom: "62%"},
+    
+    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
+    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "16%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "30%" },
+
+    coldDim: { left: "63.5%", bottom: "23%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+  };
+  const cfg125N4BE2_T = {
+    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "75%", bottom: "62%"},
+    
+    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
+    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "16%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "30%" },
+
+    coldDim: { left: "63.5%", bottom: "23%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+  };
 
   //NEMA 7
   const cfg125N7E1 = {
@@ -1438,8 +1578,48 @@ const Drawings10: React.FC<drawingProps> = ({
     flangeLeader: { left: "57%", bottom: "-42%", rotate: 0, lineHeight: 145, textOffsetY: 6, textWidth: 200, textRotate: 0 }, //NPT size
   };
 
-  const cfg2N4B = { ...cfg2N4 };
-  const cfg2N4B_T = { ...cfg2N4_T };
+  const cfg2N4B = { 
+    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "75%", bottom: "62%"},
+    
+    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
+    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "14%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "30%" },
+
+    coldDim: { left: "63.5%", bottom: "19%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 133, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+  };
+  const cfg2N4B_T = {
+    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 200, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "75%", bottom: "66%"},
+    
+    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
+    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "14%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "30%" },
+
+    coldDim: { left: "63.5%", bottom: "19%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 133, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+  };
 
   //NEMA 7
   const cfg2N7 = {
@@ -1666,8 +1846,48 @@ const Drawings10: React.FC<drawingProps> = ({
   };
 
   // 2.5 inch N4B
-  const cfg25N4B = { ...cfg25N4 };
-  const cfg25N4B_T = { ...cfg25N4_T };
+  const cfg25N4B = { 
+    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "75%", bottom: "62%"},
+    
+    hlBar: { left: "64%", bottom: "38%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 150, textOffsetY: -2},
+    HLDim: { left: "64%", bottom: "0%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "88%", bottom: "-5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "14%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "30%" },
+
+    coldDim: { left: "64%", bottom: "16%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-47%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "60%", bottom: "-25%", rotate: 0, lineHeight: 133, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+  };
+  const cfg25N4B_T = {     
+    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "75%", bottom: "62%"},
+    
+    hlBar: { left: "64%", bottom: "38%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 150, textOffsetY: -2},
+    HLDim: { left: "64%", bottom: "0%", width: "18%", dropHeight: 80 },
+    
+    elemMatLeader: { left: "88%", bottom: "-5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+
+    immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
+    immersionText: { left: "80%", top: "14%" },
+
+    foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
+    foldbackText: { left: "75%", top: "30%" },
+
+    coldDim: { left: "64%", bottom: "16%", width: "5%", riseHeight: 35 },
+    
+    terminalBoxLeader: { left: "39%", bottom: "-47%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "60%", bottom: "-25%", rotate: 0, lineHeight: 133, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+  };
 
   //NEMA 7
   const cfg25N7 = {
