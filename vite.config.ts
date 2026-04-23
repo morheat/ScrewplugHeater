@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/ScrewplugHeater/', // 👈 THIS IS CRITICAL
+  base: '/ScrewplugHeater/', // 👈 must match repo name EXACTLY
 })
