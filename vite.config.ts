@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import svgr from 'vite-plugin-svgr' // <--- Make sure this is here
 
 export default defineConfig({
-  plugins: [react()],
-  base: '/ScrewplugHeater/', // 👈 must match repo name EXACTLY
+  plugins: [react(), svgr()], // <--- and here
+  base: '/ScrewplugHeater/', 
 })
