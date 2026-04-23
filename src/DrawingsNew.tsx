@@ -50,7 +50,7 @@ import Layout125HLN4_E2DPST from "./assets/1.25 inch NEMA 4 DPST two element.svg
 import Layout125N4B_E1 from "./assets/1.25 NEMA 4 Big 1 element.svg?react"
 import Layout125N4B_E2 from "./assets/1.25  NEMA 4 big 2 element.svg?react"
 import Layout125N4B_E1T from "./assets/1.25 NEMA 4 big thermo.svg?react"
-import Layout125N4B_E2T from "./assets/1.25 NEMA 4 Big Termo 2 element.svg?react"
+import Layout125N4B_E2T from "./assets/1.25-NEMA-4-Big-Termo-2-element.svg?react"
 
 import Layout125N7_E1 from "./assets/125inNEMA7_E1.svg?react"
 import Layout125N7_E2 from "./assets/125inNEMA7_E2.svg?react"
