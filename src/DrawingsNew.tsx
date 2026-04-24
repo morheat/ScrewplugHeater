@@ -651,12 +651,12 @@ const Drawings10: React.FC<drawingProps> = ({
 
   // 1 inch N4B
   const cfg1N4B = {    
-    processLeader: { left: "75%", bottom: "140%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
-    thermoDim: { left: "67%", bottom: "59%"},
+    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "75%", bottom: "62%"},
     
-    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
-    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
-    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    hlBar: { left: "62%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 180, textOffsetY: -2},
+    HLDim: { left: "62%", bottom: "7%", width: "18%", dropHeight: 80 },
     
     elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
 
@@ -664,12 +664,12 @@ const Drawings10: React.FC<drawingProps> = ({
     immersionText: { left: "80%", top: "16%" },
 
     foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
-    foldbackText: { left: "83%", top: "25%" },
+    foldbackText: { left: "75%", top: "30%" },
 
-    coldDim: { left: "63.5%", bottom: "23%", width: "5%", riseHeight: 35 },
+    coldDim: { left: "62%", bottom: "23%", width: "5%", riseHeight: 35 },
     
-    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
-    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+    terminalBoxLeader: { left: "39%", bottom: "-40%", rotate: 20, lineHeight: 70, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "59%", bottom: "-21%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
   }
   const cfg1N4B_T = { 
     processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
@@ -693,12 +693,12 @@ const Drawings10: React.FC<drawingProps> = ({
     flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
   };
   const cfg1N4BFold = { 
-    processLeader: { left: "75%", bottom: "140%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
-    thermoDim: { left: "67%", bottom: "59%"},
+    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "75%", bottom: "62%"},
     
-    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
-    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
-    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    hlBar: { left: "62%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 180, textOffsetY: -2},
+    HLDim: { left: "62%", bottom: "7%", width: "18%", dropHeight: 80 },
     
     elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
 
@@ -706,12 +706,12 @@ const Drawings10: React.FC<drawingProps> = ({
     immersionText: { left: "80%", top: "16%" },
 
     foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
-    foldbackText: { left: "83%", top: "25%" },
+    foldbackText: { left: "82%", top: "25%" },
 
-    coldDim: { left: "63.5%", bottom: "23%", width: "5%", riseHeight: 35 },
+    coldDim: { left: "62%", bottom: "23%", width: "5%", riseHeight: 35 },
     
-    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
-    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+    terminalBoxLeader: { left: "39%", bottom: "-40%", rotate: 20, lineHeight: 70, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "59%", bottom: "-21%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
   };
   const cfg1N4BFold_T = {
     processLeader: { left: "65%", bottom: "120%", rotate: 20, lineHeight: 190, textOffsetY: 6, textWidth: 230 },
@@ -1185,22 +1185,22 @@ const Drawings10: React.FC<drawingProps> = ({
     processLeader: { left: "75%", bottom: "140%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
     thermoDim: { left: "67%", bottom: "59%"},
     
-    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
-    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
-    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    hlBar: { left: "62%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 180, textOffsetY: -2},
+    HLDim: { left: "62%", bottom: "7%", width: "18%", dropHeight: 80 },
     
     elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
 
     immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
-    immersionText: { left: "80%", top: "16%" },
+    immersionText: { left: "80%", top: "14%" },
 
     foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
     foldbackText: { left: "83%", top: "25%" },
 
-    coldDim: { left: "63.5%", bottom: "23%", width: "5%", riseHeight: 35 },
+    coldDim: { left: "62%", bottom: "23%", width: "5%", riseHeight: 35 },
     
-    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
-    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+    terminalBoxLeader: { left: "39%", bottom: "-42%", rotate: 20, lineHeight: 85, textOffsetY: 0, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "59%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
   };
   const cfg125N4BE1_T = {
     processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
@@ -1224,25 +1224,25 @@ const Drawings10: React.FC<drawingProps> = ({
     flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
   };
   const cfg125N4BE2 = { 
-    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
-    thermoDim: { left: "75%", bottom: "62%"},
+    processLeader: { left: "75%", bottom: "140%", rotate: 20, lineHeight: 210, textOffsetY: 6, textWidth: 230 },
+    thermoDim: { left: "67%", bottom: "59%"},
     
-    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
-    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
-    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    hlBar: { left: "62%", bottom: "44.5%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 180, textOffsetY: -2},
+    HLDim: { left: "62%", bottom: "7%", width: "18%", dropHeight: 80 },
     
     elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
 
     immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
-    immersionText: { left: "80%", top: "16%" },
+    immersionText: { left: "80%", top: "14%" },
 
     foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
-    foldbackText: { left: "75%", top: "30%" },
+    foldbackText: { left: "83%", top: "25%" },
 
-    coldDim: { left: "63.5%", bottom: "23%", width: "5%", riseHeight: 35 },
+    coldDim: { left: "62%", bottom: "23%", width: "5%", riseHeight: 35 },
     
-    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
-    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+    terminalBoxLeader: { left: "39%", bottom: "-42%", rotate: 20, lineHeight: 85, textOffsetY: 0, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "59%", bottom: "-23%", rotate: 0, lineHeight: 150, textOffsetY: 0, textWidth: 175, textRotate: 0 },
   };
   const cfg125N4BE2_T = {
     processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
@@ -1582,11 +1582,11 @@ const Drawings10: React.FC<drawingProps> = ({
     processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
     thermoDim: { left: "75%", bottom: "62%"},
     
-    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
-    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
-    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    hlBar: { left: "62%", bottom: "40%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 165, textOffsetY: -2},
+    HLDim: { left: "62%", bottom: "3%", width: "18%", dropHeight: 80 },
     
-    elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+    elemMatLeader: { left: "88%", bottom: "0%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
 
     immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
     immersionText: { left: "80%", top: "14%" },
@@ -1594,20 +1594,20 @@ const Drawings10: React.FC<drawingProps> = ({
     foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
     foldbackText: { left: "75%", top: "30%" },
 
-    coldDim: { left: "63.5%", bottom: "19%", width: "5%", riseHeight: 35 },
+    coldDim: { left: "62%", bottom: "19%", width: "5%", riseHeight: 35 },
     
-    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
-    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 133, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+    terminalBoxLeader: { left: "39%", bottom: "-43%", rotate: 20, lineHeight: 80, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "59%", bottom: "-22%", rotate: 0, lineHeight: 133, textOffsetY: 0, textWidth: 175, textRotate: 0 },
   };
   const cfg2N4B_T = {
-    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 200, textOffsetY: 6, textWidth: 230 },
+    processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
     thermoDim: { left: "75%", bottom: "66%"},
     
-    hlBar: { left: "63.5%", bottom: "44.5%", width: "18%", height: "2%" },
-    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 175, textOffsetY: -2},
-    HLDim: { left: "63.5%", bottom: "7%", width: "18%", dropHeight: 80 },
+    hlBar: { left: "63.5%", bottom: "40%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 165, textOffsetY: -2},
+    HLDim: { left: "63.5%", bottom: "3%", width: "18%", dropHeight: 80 },
     
-    elemMatLeader: { left: "88%", bottom: "5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+    elemMatLeader: { left: "88%", bottom: "0%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
 
     immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
     immersionText: { left: "80%", top: "14%" },
@@ -1617,8 +1617,8 @@ const Drawings10: React.FC<drawingProps> = ({
 
     coldDim: { left: "63.5%", bottom: "19%", width: "5%", riseHeight: 35 },
     
-    terminalBoxLeader: { left: "39%", bottom: "-46%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
-    flangeLeader: { left: "61%", bottom: "-23%", rotate: 0, lineHeight: 133, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+    terminalBoxLeader: { left: "39%", bottom: "-43%", rotate: 20, lineHeight: 80, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "60.5%", bottom: "-22%", rotate: 0, lineHeight: 133, textOffsetY: 0, textWidth: 175, textRotate: 0 },
   };
 
   //NEMA 7
@@ -1850,11 +1850,11 @@ const Drawings10: React.FC<drawingProps> = ({
     processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
     thermoDim: { left: "75%", bottom: "62%"},
     
-    hlBar: { left: "64%", bottom: "38%", width: "18%", height: "2%" },
-    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 150, textOffsetY: -2},
-    HLDim: { left: "64%", bottom: "0%", width: "18%", dropHeight: 80 },
+    hlBar: { left: "62.5%", bottom: "38%", width: "18%", height: "2%" },
+    hlLeader: { left: "72%", bottom: "-25%", rotate: -30, lineHeight: 155, textOffsetY: -2},
+    HLDim: { left: "62.5%", bottom: "0%", width: "18%", dropHeight: 80 },
     
-    elemMatLeader: { left: "88%", bottom: "-5%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
+    elemMatLeader: { left: "88%", bottom: "-3%", rotate: -10, lineHeight: 70, textOffsetY: 0, textWidth: 200 },
 
     immersionCover: { left: "70%", top: "0%", width: "0%", height: "11%" },
     immersionText: { left: "80%", top: "14%" },
@@ -1862,10 +1862,10 @@ const Drawings10: React.FC<drawingProps> = ({
     foldbackCover: { left: "60%", top: "40%", width: "0%", height: "5%" },
     foldbackText: { left: "75%", top: "30%" },
 
-    coldDim: { left: "64%", bottom: "16%", width: "5%", riseHeight: 35 },
+    coldDim: { left: "62.5%", bottom: "16%", width: "5%", riseHeight: 35 },
     
-    terminalBoxLeader: { left: "39%", bottom: "-47%", rotate: 20, lineHeight: 90, textOffsetY: 6, textWidth: 220, textRotate: 0 },
-    flangeLeader: { left: "60%", bottom: "-25%", rotate: 0, lineHeight: 133, textOffsetY: 0, textWidth: 175, textRotate: 0 },
+    terminalBoxLeader: { left: "39%", bottom: "-44%", rotate: 20, lineHeight: 80, textOffsetY: 6, textWidth: 220, textRotate: 0 },
+    flangeLeader: { left: "59%", bottom: "-25%", rotate: 0, lineHeight: 133, textOffsetY: 0, textWidth: 175, textRotate: 0 },
   };
   const cfg25N4B_T = {     
     processLeader: { left: "75%", bottom: "125%", rotate: 20, lineHeight: 195, textOffsetY: 6, textWidth: 230 },
@@ -2257,7 +2257,8 @@ const Drawings10: React.FC<drawingProps> = ({
                         fontSize: "15px",
                         background: "white",
                         padding: "1px 6px",
-                        fontWeight: "bold"
+                        fontWeight: "bold",
+                        color:"black"
                       }}
                     >
                       {/** ✅ use hlLength here if you have it; otherwise thermoLength is wrong */}
@@ -2274,7 +2275,8 @@ const Drawings10: React.FC<drawingProps> = ({
                         fontSize: "12px",
                         background: "white",
                         padding: "1px 6px",
-                        fontWeight: "bold"
+                        fontWeight: "bold",
+                        color:"black"
                       }}
                     >
                       High-Limit
@@ -2369,6 +2371,7 @@ const Drawings10: React.FC<drawingProps> = ({
                       fontSize: "15px",
                       background: "white",
                       padding: "1px 6px",
+                      color:"black"
                     }}
                   >
                     {coldLength}&quot;
@@ -2386,6 +2389,7 @@ const Drawings10: React.FC<drawingProps> = ({
                       fontSize: "12px",
                       background: "white",
                       padding: "1px 6px",
+                      color:"black"
                     }}
                   >
                     Cold Length
@@ -2494,8 +2498,6 @@ const Drawings10: React.FC<drawingProps> = ({
                         stem="top"      // ✅ keep current HL behavior
                       />
                     )}
-
-
 
                     {/* ==============================
                         ✅ NEW LEADER: Elements + Material
